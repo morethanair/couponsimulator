@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coupon Simulation</title>
+    <title>Coupon Simulator</title>
     <style>
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px;
+        }
+
+        .logo {
+            width: 300px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 10px; /* Space between logo and title */
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -13,6 +25,7 @@
             display: flex;
             justify-content: space-between;
             gap: 20px;
+            padding-bottom: 30px;
         }
 
         .column {
@@ -36,66 +49,70 @@
         label {
             display: block;
             margin-bottom: 5px;
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <div class="column">
-        <h2>1st Phase</h2>
-        <div class="form-group">
-            <label for="coupon1"><strong>1st Coupon Type</strong></label>
-            <select id="coupon1" onchange="updateCouponInputs(1)">
-                <option value="">-- Select --</option>
-                <option value="seller100">Seller 100</option>
-                <option value="membership">Membership</option>
-            </select>
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <img src="logo.jpg" alt="Logo" class="logo">
+            <h1>Coupon Simulator</h1>
         </div>
 
-        <div class="form-group">
-            <label for="coupon1-discount"><strong>1st Coupon Discount Rate (%)</strong></label>
-            <input type="range" id="coupon1-discount" name="coupon1-discount" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
-            <output>0</output>%
+        <div class="container">
+            <div class="column">
+                <h2>1st Phase</h2>
+                <div class="form-group">
+                    <label for="coupon1"><strong>1st Coupon Type</strong></label>
+                    <select id="coupon1" onchange="updateCouponInputs(1)">
+                        <option value="">-- Select --</option>
+                        <option value="seller100">Seller 100</option>
+                        <option value="membership">Membership</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="coupon1-discount"><strong>1st Coupon Discount Rate (%)</strong></label>
+                    <input type="range" id="coupon1-discount" name="coupon1-discount" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
+                    <output>0</output>%
+                </div>
+
+                <div class="form-group" id="coupon1-seller-portion-group">
+                    <label for="coupon1-seller-portion"><strong>1st Coupon Seller Cost Portion (%)</strong></label>
+                    <input type="range" id="coupon1-seller-portion" name="coupon1-seller-portion" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
+                    <output>0</output>%
+                </div>
+            </div>
+
+            <div class="column">
+                <h2>2nd Phase</h2>
+                <div class="form-group">
+                    <label for="coupon2"><strong>2nd Coupon Type</strong></label>
+                    <select id="coupon2" onchange="updateCouponInputs(2)">
+                        <option value="">-- Select --</option>
+                        <option value="membership">Membership</option>
+                        <option value="sellerPlus">Seller Plus</option>
+                        <option value="zigzagPlus">Zigzag Plus</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="coupon2-discount"><strong>2nd Coupon Discount Rate (%)</strong></label>
+                    <input type="range" id="coupon2-discount" name="coupon2-discount" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
+                    <output>0</output>%
+                </div>
+
+                <div class="form-group" id="coupon2-seller-portion-group">
+                    <label for="coupon2-seller-portion"><strong>2nd Coupon Seller Cost Portion (%)</strong></label>
+                    <input type="range" id="coupon2-seller-portion" name="coupon2-seller-portion" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
+                    <output>0</output>%
+                </div>
+            </div>
         </div>
 
-        <div class="form-group" id="coupon1-seller-portion-group">
-            <label for="coupon1-seller-portion"><strong>1st Coupon Seller Cost Portion (%)</strong></label>
-            <input type="range" id="coupon1-seller-portion" name="coupon1-seller-portion" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
-            <output>0</output>%
-        </div>
-    </div>
+        <button onclick="calculateDiscount()">Apply Coupons</button>
 
-    <div class="column">
-        <h2>2nd Phase</h2>
-        <div class="form-group">
-            <label for="coupon2"><strong>2nd Coupon Type</strong></label>
-            <select id="coupon2" onchange="updateCouponInputs(2)">
-                <option value="">-- Select --</option>
-                <option value="membership">Membership</option>
-                <option value="sellerPlus">Seller Plus</option>
-                <option value="zigzagPlus">Zigzag Plus</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="coupon2-discount"><strong>2nd Coupon Discount Rate (%)</strong></label>
-            <input type="range" id="coupon2-discount" name="coupon2-discount" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
-            <output>0</output>%
-        </div>
-
-        <div class="form-group" id="coupon2-seller-portion-group">
-            <label for="coupon2-seller-portion"><strong>2nd Coupon Seller Cost Portion (%)</strong></label>
-            <input type="range" id="coupon2-seller-portion" name="coupon2-seller-portion" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
-            <output>0</output>%
-        </div>
-    </div>
-</div>
-
-<button onclick="calculateDiscount()">Apply Coupons</button>
-
-<div id="result"></div>
+        <div id="result"></div>
 
 
-<script src="script.js"></script>
-</body>
-</html>
+        <script src="script.js"></script>
+    </body>
+    </html>
