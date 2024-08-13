@@ -34,15 +34,36 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 8px;
+            padding: 50px;
         }
 
         .form-group {
             margin-bottom: 15px;
         }
+        
         button {
-            padding: 10px 20px;
-            font-size: 16px;
+            background-color: #FFDE66; /* Background color */
+            color: black; /* Text color */
+            border: none; /* No border */
+            padding: 10px 20px; /* Padding for the button */
+            font-size: 16px; /* Font size */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
         }
+
+        button:hover {
+            background-color: #FFAA06; /* Darker background on hover */
+        }
+
+        button:active {
+            background-color: #FFAA06; /* Even darker background when clicked */
+        }
+
+        button:focus {
+            outline: none; /* Remove the default outline */
+            box-shadow: 0 0 5px #FFAA06; /* Add a glow effect on focus */
+        }
+
         .result {
             margin-top: 20px;
             font-weight: bold;
