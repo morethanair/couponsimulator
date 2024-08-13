@@ -98,6 +98,24 @@
         input[type="range"]:focus::-webkit-slider-runnable-track {
             background: #FFDE66;
         }
+        /* Basic styling for the select box */
+        select {
+            background-color: #FFDE66; /* Background color */
+            color: black; /* Text color */
+            border: 1px solid #007BFF; /* Border color */
+            padding: 10px; /* Padding inside the select box */
+            font-size: 16px; /* Font size */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        select::-ms-expand {
+            display: none; /* Hide the default arrow in IE/Edge */
+        }
+
+        select option {
+            background-color: #FFDE66; /* Background color of the options */
+            color: black; /* Text color of the options */
+        }
     </style>
 </head>
 <body>
