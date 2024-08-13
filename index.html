@@ -126,56 +126,56 @@
 
     <div class="container">
         <div class="column">
-            <h2>1st Phase</h2>
+            <h2>1차 쿠폰</h2>
             <div class="form-group">
-                <label for="coupon1"><strong>1st Coupon Type</strong></label>
+                <label for="coupon1"><strong>1차 쿠폰 타입</strong></label>
                 <select id="coupon1" onchange="updateCouponInputs(1)">
                     <option value="">-- Select --</option>
-                    <option value="seller100">Seller 100</option>
-                    <option value="membership">Membership</option>
+                    <option value="seller100">셀러 100</option>
+                    <option value="membership">고확프</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="coupon1-discount"><strong>1st Coupon Discount Rate (%)</strong></label>
+                <label for="coupon1-discount"><strong>1차 쿠폰 할인율 (%)</strong></label>
                 <input type="range" id="coupon1-discount" name="coupon1-discount" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
                 <output>0</output>%
             </div>
 
             <div class="form-group" id="coupon1-seller-portion-group">
-                <label for="coupon1-seller-portion"><strong>1st Coupon Seller Cost Portion (%)</strong></label>
+                <label for="coupon1-seller-portion"><strong>1차 쿠폰 셀러 분담율 (%)</strong></label>
                 <input type="range" id="coupon1-seller-portion" name="coupon1-seller-portion" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
                 <output>0</output>%
             </div>
         </div>
 
         <div class="column">
-            <h2>2nd Phase</h2>
+            <h2>2차 쿠폰</h2>
             <div class="form-group">
-                <label for="coupon2"><strong>2nd Coupon Type</strong></label>
+                <label for="coupon2"><strong>2차 쿠폰 타입</strong></label>
                 <select id="coupon2" onchange="updateCouponInputs(2)">
                     <option value="">-- Select --</option>
-                    <option value="membership">Membership</option>
-                    <option value="sellerPlus">Seller Plus</option>
-                    <option value="zigzagPlus">Zigzag Plus</option>
+                    <option value="membership">고확프</option>
+                    <option value="sellerPlus">셀러 플러스</option>
+                    <option value="zigzagPlus">지그재그 플러스</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="coupon2-discount"><strong>2nd Coupon Discount Rate (%)</strong></label>
+                <label for="coupon2-discount"><strong>2차 쿠폰 할인율 (%)</strong></label>
                 <input type="range" id="coupon2-discount" name="coupon2-discount" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
                 <output>0</output>%
             </div>
 
             <div class="form-group" id="coupon2-seller-portion-group">
-                <label for="coupon2-seller-portion"><strong>2nd Coupon Seller Cost Portion (%)</strong></label>
+                <label for="coupon2-seller-portion"><strong>2차 쿠폰 셀러 부담율 (%)</strong></label>
                 <input type="range" id="coupon2-seller-portion" name="coupon2-seller-portion" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
                 <output>0</output>%
             </div>
         </div>
     </div>
 
-    <button onclick="calculateDiscount()">Apply Coupons</button>
+    <button onclick="calculateDiscount()"><strong>Simulate</strong></button>
 
     <div id="result"></div>
 
