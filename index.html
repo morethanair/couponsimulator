@@ -63,6 +63,11 @@
             outline: none; /* Remove the default outline */
             box-shadow: 0 0 5px #FFAA06; /* Add a glow effect on focus */
         }
+        .button-container {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            margin-top: 20px; /* Optional: Add space above the button */
+        }
 
         .result {
             margin-top: 20px;
@@ -175,7 +180,9 @@
         </div>
     </div>
 
-    <button onclick="calculateDiscount()"><strong>Simulate</strong></button>
+    <div class="button-container">
+        <button onclick="calculateDiscount()"><strong>Simulate</strong></button>
+    </div>
 
     <div id="result"></div>
 
