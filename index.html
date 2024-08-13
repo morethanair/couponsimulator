@@ -13,13 +13,14 @@
         }
 
         .logo {
-            width: 300px; /* Adjust the width as needed */
+            width: 100px; /* Adjust the width as needed */
             height: auto; /* Maintain aspect ratio */
             margin-bottom: 10px; /* Space between logo and title */
         }
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            background-color: #fa6ee3;
         }
         .container {
             display: flex;
@@ -49,70 +50,97 @@
         label {
             display: block;
             margin-bottom: 5px;
-        </style>
-    </head>
-    <body>
-        <div class="header">
-            <img src="logo.png" alt="Logo" class="logo">
-            <h1>Coupon Simulator</h1>
-        </div>
+        }
+        input[type="range"] {
+            -webkit-appearance: none; /* Remove default styling */
+            appearance: none; /* Remove default styling */
+            width: 100%;
+            height: 5px;
+            background: #FFDE66; /* Green track color */
+            border-radius: 5px;
+            border: 1px solid #FFDE66;
+            cursor: pointer;
+        }
 
-        <div class="container">
-            <div class="column">
-                <h2>1st Phase</h2>
-                <div class="form-group">
-                    <label for="coupon1"><strong>1st Coupon Type</strong></label>
-                    <select id="coupon1" onchange="updateCouponInputs(1)">
-                        <option value="">-- Select --</option>
-                        <option value="seller100">Seller 100</option>
-                        <option value="membership">Membership</option>
-                    </select>
-                </div>
+        /* The slider handle (thumb) */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Override default look */
+            appearance: none;
+            width: 20px; /* Size of the handle */
+            height: 20px;
+            border-radius: 50%; /* Make it a circle */
+            background: #FFDE66; /* Orange thumb color */
+            cursor: pointer;
+            border: 2px solid #FFDE66; /* Optional: add a border around the thumb */
+            margin-top: -8px; /* Adjust the position of the thumb */
+        }
+        input[type="range"]:focus::-webkit-slider-runnable-track {
+            background: #FFDE66;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1><font color="#FFDE66">Coupon Simulator</font></h1>
+    </div>
 
-                <div class="form-group">
-                    <label for="coupon1-discount"><strong>1st Coupon Discount Rate (%)</strong></label>
-                    <input type="range" id="coupon1-discount" name="coupon1-discount" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
-                    <output>0</output>%
-                </div>
-
-                <div class="form-group" id="coupon1-seller-portion-group">
-                    <label for="coupon1-seller-portion"><strong>1st Coupon Seller Cost Portion (%)</strong></label>
-                    <input type="range" id="coupon1-seller-portion" name="coupon1-seller-portion" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
-                    <output>0</output>%
-                </div>
+    <div class="container">
+        <div class="column">
+            <h2>1st Phase</h2>
+            <div class="form-group">
+                <label for="coupon1"><strong>1st Coupon Type</strong></label>
+                <select id="coupon1" onchange="updateCouponInputs(1)">
+                    <option value="">-- Select --</option>
+                    <option value="seller100">Seller 100</option>
+                    <option value="membership">Membership</option>
+                </select>
             </div>
 
-            <div class="column">
-                <h2>2nd Phase</h2>
-                <div class="form-group">
-                    <label for="coupon2"><strong>2nd Coupon Type</strong></label>
-                    <select id="coupon2" onchange="updateCouponInputs(2)">
-                        <option value="">-- Select --</option>
-                        <option value="membership">Membership</option>
-                        <option value="sellerPlus">Seller Plus</option>
-                        <option value="zigzagPlus">Zigzag Plus</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label for="coupon1-discount"><strong>1st Coupon Discount Rate (%)</strong></label>
+                <input type="range" id="coupon1-discount" name="coupon1-discount" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>%
+            </div>
 
-                <div class="form-group">
-                    <label for="coupon2-discount"><strong>2nd Coupon Discount Rate (%)</strong></label>
-                    <input type="range" id="coupon2-discount" name="coupon2-discount" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
-                    <output>0</output>%
-                </div>
-
-                <div class="form-group" id="coupon2-seller-portion-group">
-                    <label for="coupon2-seller-portion"><strong>2nd Coupon Seller Cost Portion (%)</strong></label>
-                    <input type="range" id="coupon2-seller-portion" name="coupon2-seller-portion" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
-                    <output>0</output>%
-                </div>
+            <div class="form-group" id="coupon1-seller-portion-group">
+                <label for="coupon1-seller-portion"><strong>1st Coupon Seller Cost Portion (%)</strong></label>
+                <input type="range" id="coupon1-seller-portion" name="coupon1-seller-portion" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>%
             </div>
         </div>
 
-        <button onclick="calculateDiscount()">Apply Coupons</button>
+        <div class="column">
+            <h2>2nd Phase</h2>
+            <div class="form-group">
+                <label for="coupon2"><strong>2nd Coupon Type</strong></label>
+                <select id="coupon2" onchange="updateCouponInputs(2)">
+                    <option value="">-- Select --</option>
+                    <option value="membership">Membership</option>
+                    <option value="sellerPlus">Seller Plus</option>
+                    <option value="zigzagPlus">Zigzag Plus</option>
+                </select>
+            </div>
 
-        <div id="result"></div>
+            <div class="form-group">
+                <label for="coupon2-discount"><strong>2nd Coupon Discount Rate (%)</strong></label>
+                <input type="range" id="coupon2-discount" name="coupon2-discount" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>%
+            </div>
+
+            <div class="form-group" id="coupon2-seller-portion-group">
+                <label for="coupon2-seller-portion"><strong>2nd Coupon Seller Cost Portion (%)</strong></label>
+                <input type="range" id="coupon2-seller-portion" name="coupon2-seller-portion" min="0" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
+                <output>0</output>%
+            </div>
+        </div>
+    </div>
+
+    <button onclick="calculateDiscount()">Apply Coupons</button>
+
+    <div id="result"></div>
 
 
-        <script src="script.js"></script>
-    </body>
-    </html>
+    <script src="script.js"></script>
+</body>
+</html>

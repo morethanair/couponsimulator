@@ -4,9 +4,14 @@ function updateCouponInputs(couponNumber) {
     const sellerPortionGroup = document.getElementById(`coupon${couponNumber}-seller-portion-group`);
     const sellerPortionInput = document.getElementById(`coupon${couponNumber}-seller-portion`);
 
-    // Reset inputs
+    // Reset all inputs to initial values
+    discountInput.value = 0;
+    discountInput.nextElementSibling.value = 0; // Reset the output value
+    sellerPortionInput.value = 0;
+    sellerPortionInput.nextElementSibling.value = 0; // Reset the output value
+    sellerPortionGroup.style.display = 'block'; // Ensure the seller portion is visible
+
     discountInput.disabled = false;
-    sellerPortionGroup.style.display = 'block';
     sellerPortionInput.disabled = false;
 
     if (couponNumber === 1) {
@@ -14,6 +19,7 @@ function updateCouponInputs(couponNumber) {
             discountInput.max = 100;
             sellerPortionGroup.style.display = 'none';
             document.getElementById('coupon1-seller-portion').value = 100;
+            document.getElementById('coupon1-seller-portion').nextElementSibling.value = 100;
         } else if (couponType === 'membership') {
             discountInput.max = 20;
             sellerPortionInput.max = 80;
