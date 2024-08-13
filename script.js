@@ -24,7 +24,7 @@ function updateCouponInputs(couponNumber) {
             discountInput.max = 20;
             sellerPortionInput.max = 80;
         } else if (couponType === 'sellerPlus' || couponType === 'zigzagPlus') {
-            alert("Seller Plus and Zigzag Plus cannot be used in the 1st phase.");
+            alert("셀러 플러스와 지그재그 플러스 쿠폰은 1차로 사용될 수 없습니다.");
             document.getElementById(`coupon${couponNumber}`).value = '';
             discountInput.disabled = true;
             sellerPortionInput.disabled = true;
@@ -33,7 +33,7 @@ function updateCouponInputs(couponNumber) {
 
     if (couponNumber === 2) {
         if (couponType === 'seller100') {
-            alert("Seller 100 cannot be used as the 2nd phase coupon.");
+            alert("셀러 100은 2차에 사용될 수 없습니다.");
             document.getElementById(`coupon${couponNumber}`).value = '';
             discountInput.disabled = true;
             sellerPortionInput.disabled = true;
@@ -72,13 +72,13 @@ function validateSellerPortion() {
     // Apply Membership rules if the 1st coupon is Membership
     if (coupon1Type === 'membership') {
         if (discount1 > 20) {
-            alert("Discount for Membership cannot exceed 20%.");
+            alert("고확프의 할인율은 20%를 넘을 수 없습니다.");
             discount1 = 20;
             document.getElementById('coupon1-discount').value = discount1;
             document.getElementById('coupon1-discount').nextElementSibling.value = discount1;
         }
         if (sellerPortion1 > 80) {
-            alert("Seller portion for Membership cannot exceed 80%.");
+            alert("고확프의 셀러 분담율은 80%를 넘을 수 없습니다.");
             sellerPortion1 = 80;
             document.getElementById('coupon1-seller-portion').value = sellerPortion1;
             document.getElementById('coupon1-seller-portion').nextElementSibling.value = sellerPortion1;
@@ -92,7 +92,7 @@ function validateSellerPortion() {
 
     // Apply Membership rules if the 2nd coupon is Membership
     if (coupon2Type === 'membership' && sellerPortion2 > 80) {
-        alert("Seller portion for Membership cannot exceed 80%.");
+        alert("고확프의 셀러 분담율은 80%를 넘을 수 없습니다.");
         sellerPortion2 = 80;
         document.getElementById('coupon2-seller-portion').value = sellerPortion2;
         document.getElementById('coupon2-seller-portion').nextElementSibling.value = sellerPortion2;
@@ -107,7 +107,7 @@ function validateSellerPortion() {
 
     // Check if total exceeds 16%
     if (totalSellerPortion > 0.16) {
-        alert("Total seller cost portion exceeds 16%. Adjusting the values.");
+        alert("최종 셀러 분담율이 16%를 초과합니다. 값을 조정하세요.");
 
         // Adjust the second seller portion first
         let remainingPortion = 0.16 - sellerCostPortion1;
@@ -148,10 +148,10 @@ function calculateDiscount() {
     const totalSellerPortion = (discount1 * sellerPortion1 + discount2 * sellerPortion2) * 100;
 
     document.getElementById('result').innerHTML = `
-        <p>1st Coupon: ${(discount1 * 100).toFixed(2)}% discount, ${(sellerPortion1 * 100).toFixed(2)}% seller cost portion</p>
-        <p>2nd Coupon: ${(discount2 * 100).toFixed(2)}% discount, ${(sellerPortion2 * 100).toFixed(2)}% seller cost portion</p>
+        <p>1차 쿠폰: ${(discount1 * 100).toFixed(2)}% 할인, ${(sellerPortion1 * 100).toFixed(2)}% 셀러 분담율</p>
+        <p>2차 쿠폰: ${(discount2 * 100).toFixed(2)}% 할인, ${(sellerPortion2 * 100).toFixed(2)}% 셀러 분담율</p>
         <hr>
-        <p>Total Discount: ${totalDiscount.toFixed(2)}%</p>
-        <p>Total Seller Cost Portion: ${totalSellerPortion.toFixed(2)}%</p>
+        <p>전체 할인: ${totalDiscount.toFixed(2)}%</p>
+        <p>전체 셀러 분담율: ${totalSellerPortion.toFixed(2)}%</p>
     `;
 }
