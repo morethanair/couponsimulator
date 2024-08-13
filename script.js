@@ -148,10 +148,10 @@ function calculateDiscount() {
     const totalSellerPortion = (discount1 * sellerPortion1 + discount2 * sellerPortion2) * 100;
 
     document.getElementById('result').innerHTML = `
-        <p>1차 쿠폰: ${(discount1 * 100).toFixed(2)}% 할인, ${(sellerPortion1 * 100).toFixed(2)}% 셀러 분담율</p>
-        <p>2차 쿠폰: ${(discount2 * 100).toFixed(2)}% 할인, ${(sellerPortion2 * 100).toFixed(2)}% 셀러 분담율</p>
+        <p><strong>1차 쿠폰: ${(discount1 * 100).toFixed(2)}% 할인, ${(sellerPortion1 * 100).toFixed(2)}% 셀러 분담율</strong></p>
+        <p><strong>2차 쿠폰: ${(discount2 * 100).toFixed(2)}% 할인, ${(sellerPortion2 * 100).toFixed(2)}% 셀러 분담율</strong></p>
         <hr>
-        <p>전체 할인: ${totalDiscount.toFixed(2)}%</p>
-        <p>전체 셀러 분담율: ${totalSellerPortion.toFixed(2)}%</p>
+        <p><strong>전체 할인: ${totalDiscount.toFixed(2)}%</strong></p>
+        <p><strong>전체 셀러 분담율: ${totalSellerPortion.toFixed(2)}%</strong></p>
     `;
 }
